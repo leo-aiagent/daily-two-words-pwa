@@ -1,0 +1,25 @@
+# Dependencies and content provenance
+
+Original application source, UI, icons, definitions, examples and translations are provided under the MIT license in LICENSE. Exact dependency versions and integrity hashes are in package-lock.json.
+
+Runtime: React / React DOM (MIT), Dexie (Apache-2.0), Zod (MIT), Papa Parse (MIT), Lucide React (ISC), and Workbox (MIT). Build/test tools retain their respective upstream licenses; installed packages include their license files. Runtime dependency licenses are also available in public/DEPENDENCY_LICENSES.txt.
+
+## Pronunciation audio v3 (word, normal sentence, slow sentence)
+
+The 240 original-speed word and sentence MP3s were generated locally from the project's original learning text with **Kokoro-82M v1.0**, converted by onnx-community, using the **af_heart** American English female voice and fp32 inference. This is synthetic speech, not a claim of human recording or certified pronunciation assessment.
+
+- Original model: https://huggingface.co/hexgrad/Kokoro-82M (Apache-2.0)
+- ONNX conversion: https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX (Apache-2.0)
+- Model revision used for this delivery: 1939ad2a8e416c0acfeecc08a694d14ef25f2231
+- Build-time JavaScript tool: kokoro-js 1.2.1 (Apache-2.0), https://github.com/hexgrad/kokoro
+- American voice: af_heart; speed 0.90 for words, 0.94 for full example sentences.
+- Encoding: mono, 24000 Hz, 64 kbps MP3; normalized loudness target -18 LUFS, true peak -2 dBTP.
+- Another 120 slow example MP3s preserve pitch using FFmpeg atempo=0.7; their durations and SHA256 are listed in the v3 inventory. The app plays these files at playbackRate=1.
+- Reproducible recipe: scripts/generate-audio.mjs followed by scripts/generate-slow-audio.mjs; optional KOKORO_MODEL_DIR for local model files and FFMPEG_PATH for FFmpeg.
+- Text/path/duration/SHA256 inventory: src/data/audio-manifest.json.
+
+The model and inference engine are used at build time and are not shipped in the PWA. No proprietary system-voice outputs, commercial recordings, cloned private voices, paid TTS API, or user recordings are redistributed. Only the generated MP3 files are supplied to phones, and they remain usable offline.
+
+Kokoro's upstream model card provides the model's training-data provenance and attribution, including Koniwa (CC BY 3.0) and SIWIS (CC BY 4.0); refer to that model card for the original credits. Build-time phonemizer uses eSpeak NG internally for text-to-phoneme conversion; its synthesis engine is not the waveform voice used in these v2 MP3s, and is not included in browser runtime code. Kokoro and phonemizer tool license texts are included in public/GENERATION_TOOL_LICENSES.txt.
+
+To the extent rights exist in the project-created audio outputs, the application's MIT reuse permission applies. Independently verify redistribution rights when substituting other recordings or models.
