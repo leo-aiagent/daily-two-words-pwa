@@ -1,11 +1,9 @@
-# 每天两个词 · v1.3.1
+# 每天两个词 · v1.4.0
 
-家庭英语静态 PWA，React + TypeScript + Vite + IndexedDB。正式安装地址：https://leo-aiagent.github.io/daily-two-words-pwa/
+家庭英语静态 PWA。正式安装地址：https://leo-aiagent.github.io/daily-two-words-pwa/
 
-本机口语识别：首次在口语关分段并行下载约 40 MB 英文包，此后无需联网语音服务；声音留在设备上。识别匹配正确后继续 A–Z 拼写，两个词均完成后孩子自行打卡。无需账号、PIN、云数据库或持续运行的业务后台。
+录音保存版：孩子录下单词，回听并保存后完成朗读练习，继续 A–Z 拼写，两个词完成后自行打卡。不使用语音识别，不判断读音对错，不需要下载识别模型。
 
-本仓库仅包含编译后的公开静态文件、词库、音频和开源识别资源，不包含家庭学习记录。手机之间不会自动同步，请自行导出 JSON 备份。
+录音按档案、单词和日期保存在本机 IndexedDB，刷新和重启后可回听、下载；JSON v3 备份包含音频，兼容旧版学习记录。不自动云同步。无需账号、PIN、业务后台或云数据库。
 
-Vosk / 模型 Apache-2.0，许可在 asr/LICENSE.txt、asr/NOTICE.txt；识别词表 CC-BY-SA-4.0，来源与完整署名在 asr/recognition-vocabulary.json 和 asr/wordfreq-NOTICE.txt。语音合成音频为 Kokoro-82M af_heart，Apache-2.0。
-
-GitHub Pages 从 main 根目录直接提供文件。已有用户通过 App 更新提示更新，保留同一域名和路径以保持本机数据。请勿清除网站数据来更新。
+本仓库仅包含公开编译文件和 360 段 Kokoro 合成教学音频（Apache-2.0），不包含任何孩子录音或学习记录。请不要清理网站数据来更新；在 App 提示中点击更新。
